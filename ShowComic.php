@@ -27,6 +27,7 @@ _reloadPage(true);
     $filename = "Series/".$series."/Issue".$issue."/".$_GET["page"].".jpg";
     $count = count(glob($folder."*"));
     
+    $archive = "ShowSeries.php?series=".$series;
     $next = "ShowComic.php?series=".$series."&issue=".$issue."&page=".($pageNumber+1);
     $prev = "ShowComic.php?series=".$series."&issue=".$issue."&page=".($pageNumber-1);
     
@@ -67,7 +68,7 @@ _reloadPage(true);
 
 <!-FIRST BUTTON->
 <div id="first" style="position:absolute; left:310px; top:318px; width:90px; height:39px; z-index:25; background-color: #666666; layer-background-color: #666666; border: 1px none #000000; visibility: visible">
-<div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" color="#999999"><?php echo $firstButton;?></font></b></div>
+<div align="center"><b><font face="Verdana, Arial, Helvfetica, sans-serif" color="#999999"><?php echo $firstButton;?></font></b></div>
 </div>
 <div id="Layer7" style="position:absolute; left:291px; top:1756px; width:82px; height:22px; z-index:34; background-color: #666666; layer-background-color: #666666; border: 1px none #000000">
 <div align="center"><b><font color="#999999" face="Verdana, Arial, Helvetica, sans-serif"><?php echo $firstButton;?></font></b></div>
@@ -88,7 +89,7 @@ _reloadPage(true);
 </div>
 <div id="Layer11" style="position:absolute; left:890px; top:317px; width:89px; height:41px; z-index:42; background-color: #666666; layer-background-color: #666666; border: 1px none #000000">
 <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="#999999"><b><?php echo $nextButton;?></b></font></div>
-</div><
+</div>
 
 
 <!-LATEST BUTTON->
@@ -103,12 +104,12 @@ _reloadPage(true);
 
 
 <div id="Layer16" style="position:absolute; left:585px; top:318px; width:265px; height:80px; z-index:23; background-color: #666666; layer-background-color: #666666; border: 1px none #000000">
-  <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><a href="bonkie_comics.html">ARCHIVE 
+  <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><a href="<?php echo $archive?>">ARCHIVE
     FOR THIS COMIC</a></font></b></div>
 </div
 <div id="Layer17" style="position:absolute; left:202px; top:1756px; width:1000px; height:36px; z-index:29; background-color: #333333; layer-background-color: #333333; border: 1px none #000000"></div>
 <div id="Layer19" style="position:absolute; left:571px; top:1756px; width:264px; height:22px; z-index:43; background-color: #666666; layer-background-color: #666666; border: 1px none #000000"> 
-  <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><a href="bonkie_comics.html">ARCHIVE 
+  <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><a href="<?php echo $archive?>">ARCHIVE 
     FOR THIS COMIC</a></font></b></div>
 </div>
 

@@ -24,14 +24,15 @@ MM_reloadPage(true);
 <?php
     for ($i=0;$i<$count;$i++){
         $folder2 = "Series/".$series."/Issue".($i+1)."/";
-        echo $folder2;
         $pageCount = count(glob($folder2."*"));
-        echo $pageCount;
+        
+        $string = file_get_contents($folder2."/info.json");
+        $json_a = json_decode($string, true);
     ?>
 <div id="SeriesBlock" style="position:absolute; left:264px; top:<?php echo (359+($i*453));?>px; width:935px; height:413px; z-index:10; background-color: #000000; layer-background-color: #000000; border: 1px none #000000; visibility: visible">
 
     <div id="Layer10" style="position:absolute; left:0px; top:-31px; width:935px; height:38px; z-index:11; background-color: #333333; layer-background-color: #333333; border: 1px none #000000"></div>
-    <div id="Layer11" style="position:absolute; left:312px; top:-20px; width:308px; height:33px; z-index:45"><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>ISSUE 1 - A Study in Scars</b></font></div>
+    <div id="Layer11" style="position:absolute; left:312px; top:-20px; width:308px; height:33px; z-index:45"><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b>ISSUE <?php echo ($i+1)." - ".$json_a["Title"]?></b></font></div>
 
     <div id="Layer9" style="position:absolute; left:294px; top:44px; width:612px; height:332px; z-index:47">
         <table width="600" border="0" cellspacing="0" cellpadding="0">
@@ -59,14 +60,14 @@ MM_reloadPage(true);
 
 <div id="Layer7" style="position:absolute; left:37px; top:33px; width:251px; height:355px; z-index:46"><img src="astudyinscarscover.jpg" width="250" height="354"></div>
 <div id="Layer14" style="position:absolute; left:305px; top:270px; width:586px; height:84px; z-index:49">
-<p><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Credits:</b></font><br>
-<font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2">Story
-and art: Angelo Pizarro<br>
-Editing help: Erika<br>
-Fonts used: <i>ACME Secret Agent BB</i> by Blambot Comic Fonts, <i>Brown Shoes</i>
-by Imagex, <i>Tekton Pro</i>, <i>Verdana</i> and <i>AR Bonnie</i>.</font></p>
-</div>
+<p><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Credits:</b><p>
+<?php echo $json_a["Credits"]?></font><br>
+<font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2">
 
+
+
+</font></p>
+</div>
 </div>
 
 <?php
