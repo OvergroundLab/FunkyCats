@@ -58,7 +58,7 @@ MM_reloadPage(true);
         </table>
     </div>
 
-<div id="Layer7" style="position:absolute; left:37px; top:33px; width:251px; height:355px; z-index:46"><img src="astudyinscarscover.jpg" width="250" height="354"></div>
+<div id="Layer7" style="position:absolute; left:37px; top:33px; width:251px; height:355px; z-index:46"><img src="<?php echo $json_a["Pic"]?>" width="250" height="354"></div>
 <div id="Layer14" style="position:absolute; left:305px; top:270px; width:586px; height:84px; z-index:49">
 <p><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Credits:</b><p>
 <?php echo $json_a["Credits"]?></font><br>
