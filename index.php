@@ -22,10 +22,28 @@ _reloadPage(true);
     $series = $_GET["series"];
     $issue = $_GET["issue"];
     $pageNumber = $_GET["page"];
+    $news="";
+    
+    if($series==null)
+    {
+        $string = file_get_contents("Series/mainpage.json");
+        $json_a = json_decode($string, true);
+        $news=$json_a["News"];
+
+        $series = $json_a["Series"];
+        $issue = $json_a["Issue"];
+    }
     
     $folder = "Series/".$series."/Issue".$issue."/";
-    $filename = "Series/".$series."/Issue".$issue."/".$_GET["page"].".jpg";
-    $count = count(glob($folder."*"));
+    $count = count(glob($folder."*"))-1;
+    
+    if($pageNumber==null)
+    {
+        $pageNumber = $count;
+    }
+    
+    
+    $filename = "Series/".$series."/Issue".$issue."/".$pageNumber.".jpg";
     
     $archive = "ShowSeries.php?series=".$series;
     $next = "ShowComic.php?series=".$series."&issue=".$issue."&page=".($pageNumber+1);
@@ -34,25 +52,25 @@ _reloadPage(true);
     $previousButton = "PREVIOUS";
     if($pageNumber>1)
     {
-        $previousButton = "<a href=\"ShowComic.php?series=".$series."&issue=".$issue."&page=".($pageNumber-1)."\">".$previousButton."</a>";
+        $previousButton = "<a href=\"Index.php?series=".$series."&issue=".$issue."&page=".($pageNumber-1)."\">".$previousButton."</a>";
     }
     
     $nextButton = "NEXT";
     if($pageNumber<$count)
     {
-        $nextButton = "<a href=\"ShowComic.php?series=".$series."&issue=".$issue."&page=".($pageNumber+1)."\">".$nextButton."</a>";
+        $nextButton = "<a href=\"Index.php?series=".$series."&issue=".$issue."&page=".($pageNumber+1)."\">".$nextButton."</a>";
     }
     
     $firstButton = "FIRST";
     if($pageNumber>1)
     {
-        $firstButton = "<a href=\"ShowComic.php?series=".$series."&issue=".$issue."&page=1\">".$firstButton."</a>";
+        $firstButton = "<a href=\"Index.php?series=".$series."&issue=".$issue."&page=1\">".$firstButton."</a>";
     }
     
     $latestButton = "LATEST";
     if($pageNumber<$count)
     {
-        $latestButton = "<a href=\"ShowComic.php?series=".$series."&issue=".$issue."&page=".$count."\">".$latestButton."</a>";
+        $latestButton = "<a href=\"Index.php?series=".$series."&issue=".$issue."&page=".$count."\">".$latestButton."</a>";
     }
     
     ?>
@@ -97,11 +115,22 @@ _reloadPage(true);
 <div id="Layer9" style="position:absolute; left:1022px; top:1757px; width:114px; height:24px; z-index:40; background-color: #666666; layer-background-color: #666666; border: 1px none #000000">
 <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="#999999"><b><?php echo $latestButton;?></b></font></div>
 </div>
-<div id="Layer10" style="position:absolute; left:1271px; top:1760px; width:27px; height:62px; z-index:46"></div>
+
 <div id="Layer20" style="position:absolute; left:987px; top:317px; width:131px; height:37px; z-index:41; background-color: #666666; layer-background-color: #666666; border: 1px none #000000">
 <div align="center"><font color="#999999" face="Verdana, Arial, Helvetica, sans-serif"><b><?php echo $latestButton;?></b></font></div>
 </div>
 
+<?PHP if ($news!="")
+    {?>
+<div id="Layer8" style="position:absolute; left:201px; top:1811px; width:1000px; height:43px; z-index:37; background-color: #333333; layer-background-color: #333333; border: 1px none #000000"></div>
+<div id="Layer9" style="position:absolute; left:201px; top:1854px; width:1000px; height:181px; z-index:38; background-color: #000000; layer-background-color: #000000; border: 1px none #000000"></div>
+<div id="Layer10" style="position:absolute; left:221px; top:1822px; width:137px; height:43px; z-index:39"><b><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF">LATEST
+NEWS</font></b></div>
+<div id="Layer11" style="position:absolute; left:227px; top:1867px; width:935px; height:214px; z-index:40">
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">
+<?PHP echo($news)?>
+</div>
+<?php } ?>
 
 <div id="Layer16" style="position:absolute; left:585px; top:318px; width:265px; height:80px; z-index:23; background-color: #666666; layer-background-color: #666666; border: 1px none #000000">
   <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><a href="<?php echo $archive?>">ARCHIVE

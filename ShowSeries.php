@@ -24,7 +24,7 @@ MM_reloadPage(true);
 <?php
     for ($i=0;$i<$count;$i++){
         $folder2 = "Series/".$series."/Issue".($i+1)."/";
-        $pageCount = count(glob($folder2."*"));
+        $pageCount = count(glob($folder2."*"))-1;
         
         $string = file_get_contents($folder2."/info.json");
         $json_a = json_decode($string, true);
@@ -49,7 +49,7 @@ MM_reloadPage(true);
     ?>
 
                 <td>
-                    <div align="center"><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b><a href="ShowComic.php?series=<?php echo $series?>&issue=<?php echo $i+1?>&page=<?php echo $p+1?>">PAGE
+                    <div align="center"><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif"><b><a href="index.php?series=<?php echo $series?>&issue=<?php echo $i+1?>&page=<?php echo $p+1?>">PAGE
                         <?php echo ($p+1)?></a></b></font></div>
                 </td>
 <?php
@@ -58,7 +58,13 @@ MM_reloadPage(true);
         </table>
     </div>
 
+<?php
+    if($json_a["Pic"])
+    {?>
 <div id="Layer7" style="position:absolute; left:37px; top:33px; width:251px; height:355px; z-index:46"><img src="<?php echo $json_a["Pic"]?>" width="250" height="354"></div>
+<?php
+    }
+    ?>
 <div id="Layer14" style="position:absolute; left:305px; top:270px; width:586px; height:84px; z-index:49">
 <p><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Credits:</b><p>
 <?php echo $json_a["Credits"]?></font><br>

@@ -20,7 +20,7 @@ MM_reloadPage(true);
 
 <div id="Layer13" style="position:absolute; left:684px; top:93px; width:349px; height:82px; z-index:42"><img src="updates_sundays.png" width="393" height="94"></div>
 <div id="Layer7" style="position:absolute; left:284px; top:370px; width:180px; height:193px; z-index:43"><a href="ShowSeries.php?series=Bonkie"><img src="bonkie_comics_button.png" width="180" height="193" border="0"></a></div>
-<div id="Layer8" style="position:absolute; left:465px; top:370px; width:266px; height:193px; z-index:44"><a href="two_amorini_comics.html"><img src="amorini_button.png" width="265" height="193" border="0"></a></div>
+<div id="Layer8" style="position:absolute; left:465px; top:370px; width:266px; height:193px; z-index:44"><a href="ShowSeries.php?series=Amorini"><img src="amorini_button.png" width="265" height="193" border="0"></a></div>
 <div id="Layer10" style="position:absolute; left:963px; top:373px; width:179px; height:194px; z-index:46"><img src="sigurd_comics_button.png" width="180" height="193"></div>
 <div id="Layer12" style="position:absolute; left:613px; top:576px; width:219px; height:224px; z-index:48"><img src="oneshots_comics_button.png" width="219" height="223"></div>
 <div id="Layer14" style="position:absolute; left:866px; top:588px; width:251px; height:198px; z-index:49"><img src="fan_comics_button.png" width="180" height="193"></div>
